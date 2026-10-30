@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typeset: font pairing lab</title>
+  <meta name="description" content="Pick a headline font and a body font from Google Fonts, see them on a live sample page, and copy the CSS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=DM+Mono:wght@400;500&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link id="gf" rel="stylesheet" href="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <h1 class="brand">Typeset</h1>
+        <p class="lede">Pick two fonts, see them work together, copy the CSS.</p>
+      </div>
+      <button id="shuffle" class="btn primary" type="button">Shuffle <kbd>Space</kbd></button>
+    </header>
+
+    <section class="panel">
+      <h2>Starting points</h2>
+      <div id="presets" class="chips" role="group" aria-label="Preset pairings"></div>
+    </section>
+
+    <section class="grid">
+      <div class="panel controls">
+        <h2>Fonts</h2>
+
+        <div class="pick">
+          <label for="hFont">Headline font</label>
+          <div class="row">
+            <select id="hFont"></select>
+            <select id="hWeight" aria-label="Headline weight"></select>
+            <button id="hLock" class="chip lock" type="button" aria-pressed="false">Lock</button>
+          </div>
+        </div>
+
+        <div class="pick">
+          <label for="bFont">Body font</label>
+          <div class="row">
+            <select id="bFont"></select>
+            <select id="bWeight" aria-label="Body weight"></select>
+            <button id="bLock" class="chip lock" type="button" aria-pressed="false">Lock</button>
+          </div>
+        </div>
+
+        <p id="note" class="note" role="status" aria-live="polite"></p>
+
+        <h2 class="sub">Scale and spacing</h2>
+        <div class="sliders">
+          <label class="range">Base size
+            <input id="size" type="range" min="14" max="22" step="1" value="18">
+            <output id="sizeOut">18 px</output>
+          </label>
+          <label class="range">Scale
+            <select id="ratio" aria-label="Type scale ratio">
+              <option value="1.125">Major second 1.125</option>
+              <option value="1.2">Minor third 1.2</option>
+              <option value="1.25" selected>Major third 1.25</option>
+              <option value="1.333">Perfect fourth 1.333</option>
+              <option value="1.5">Perfect fifth 1.5</option>
+            </select>
+          </label>
+          <label class="range">Line height
+            <input id="lh" type="range" min="1.3" max="1.9" step="0.05" value="1.6">
+            <output id="lhOut">1.6</output>
+          </label>
+          <label class="range">Headline spacing
+            <input id="ls" type="range" min="-0.06" max="0.04" step="0.01" value="-0.02">
+            <output id="lsOut">-0.02em</output>
+          </label>
+        </div>
+
+        <h2 class="sub">Sample</h2>
+        <label class="field" for="text">Headline text</label>
+        <input id="text" type="text" value="Type with a point of view" maxlength="60" autocomplete="off">
+        <div class="chips tight" role="group" aria-label="Preview theme">
+          <button id="themeLight" class="chip" type="button" aria-pressed="true">Light page</button>
+          <button id="themeDark" class="chip" type="button" aria-pressed="false">Dark page</button>
+        </div>
+      </div>
+
+      <div class="panel previewpanel">
+        <h2>Preview</h2>
+        <article id="sample" class="sample light">
+          <div class="s-nav"><span class="s-logo">Studio North</span><span class="s-links"><span>Work</span><span>About</span><span>Contact</span></span></div>
+          <p class="s-kicker">Typography</p>
+          <h1 id="sH1"></h1>
+          <p class="s-lede">Type is the voice of a page. Pair two fonts well and the reader hears one confident speaker.</p>
+          <div class="s-actions"><span class="s-btn">Get started</span><span class="s-link">Read the guide</span></div>
+          <h2>Why pairing matters</h2>
+          <p>A headline font sets the mood. A body font carries the reading. When they agree on rhythm but differ in shape, the page feels designed instead of assembled.</p>
+          <h3>Contrast, not conflict</h3>
+          <p>Try a serif headline over a clean sans body, or the other way around. Keep weights close to what each font does best, and let size and spacing do the rest.</p>
+          <blockquote>The best pairings feel like one voice with two moods.</blockquote>
+          <p class="s-small">Caption text sits one step below the body size on the scale.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel output">
+      <div class="outhead">
+        <h2>Export</h2>
+        <div id="formats" class="chips" role="group" aria-label="Export format"></div>
+      </div>
+      <pre><code id="code"></code></pre>
+      <div class="actions">
+        <button id="copy" class="btn primary" type="button">Copy</button>
+        <button id="save" class="btn" type="button">Save pairing</button>
+        <button id="share" class="btn" type="button">Copy share link</button>
+        <span id="toast" class="toast" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Saved pairings</h2>
+      <p id="emptySaved" class="hint">Nothing saved yet. Save a pairing and it stays in this browser.</p>
+      <div id="saved" class="saved"></div>
+    </section>
+
+    <footer class="foot">
+      <span>Built by Ayoboyede. HTML, CSS and vanilla JavaScript, no dependencies. Fonts from Google Fonts.</span>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
